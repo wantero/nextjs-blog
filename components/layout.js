@@ -2,9 +2,15 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import Router from 'next/router'
 
 const name = 'William Pavei Antero'
 export const siteTitle = 'Next.js Sample Website'
+
+// Track client-side page views with Segment
+Router.events.on('routeChangeComplete', (url) => {
+  window.analytics.page(url)
+})
 
 export default function Layout({ children, home }) {
   return (
